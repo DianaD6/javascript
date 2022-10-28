@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        #error{
+            border: none;
+            border-color: transparent;
+            color: red;
+        }
+    </style>
+<header>
+    <title>Formulario</title>
+
+    <script src="regexp.js"></script>
+</header>
+
+<body>
+    <h1>Formulario recogida de datos de las empresas</h1>
+
+
+    <form name="formulario">
+        Razon social/Apellidos y nombre <input type="text" name="nombre" /> <input type="text" name="errornombre" id="error" readonly
+        size="50px"><br><br>
+        Codigo de la Empresa <input type="text" name="codempresa" /><br><br><input type="text" name="errorcodempresa" id="error" readonly
+        size="50px"><br><br>
+        CIF/NIF de la Empresa <input type="text" name="cifnif" /> <input type="text" name="errornif" id="error" readonly
+            size="50px"><br><br>
+        <fieldset>
+            <legend>Tipo de persona</legend>
+            <label>
+                <input type="radio" name="tipopersona" value="juridica" />Juridica
+            </label>
+            <label>
+                <input type="radio" name="tipopersona" value="fisica" />Fisica
+            </label>
+            <br><br><input type="text" name="errorpersona" id="error" readonly size="50px">
+        </fieldset> <br>
+        <fieldset>
+            <legend>Domicilio Social/Particular</legend>
+            Direccion <input type="text" name="direccion" /> <input type="text" name="errordireccion" id="error" readonly
+            size="50px"><br><br>
+            Telefono <input type="text" name="telefono" /> <input type="text" name="errortel" id="error" readonly
+                size="50px"><br><br>
+            FAX <input type="text" name="fax" />
+            Localidad <input type="text" name="localidad" /> <input type="text" name="errorlocalidad" id="error" readonly
+            size="50px"><br><br>
+            Codigo Postal <input type="text" name="codpostal" onchange="esCodigoPostal(codpostal, provincia)" /> <input
+                type="text" name="errorpostal" id="error" readonly size="50px">
+            Provincia <input type="text" name="provincia" readonly />
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Datos Bancarios</legend>
+            Codigos del banco <input type="text" name="codbanco" /> <input type="text" name="errorcodbanco" id="error" readonly
+                size="50px"><br><br>
+            Codigo oficina <input type="text" name="codoficina" /> <input type="text" name="errorcodoficina" id="error" readonly
+                size="50px"><br><br>
+            Codigo control <input type="text" name="codcontrol" /> <input type="text" name="errorcodcontrol" id="error" readonly
+                size="50px"><br><br>
+            Numero de cuenta <input type="text" name="numcuenta" /> <input type="text" name="errornumcuenta" id="error" readonly
+                size="50px"><br><br>
+            IBAN <input type="text" name="iban" /> <input type="text" name="erroriban" id="error" readonly size="50px"><br>
+        </fieldset>
+        <br>
+        Fecha Constitucion Empresa <input type="text" name="fecha" /> <input type="text" name="errorfecha" id="error" readonly
+            size="50px"><br><br>
+        Numero de trabajadores <input type="text" name="numtrabajadores"> <input type="text" name="errornumtrabajadores"
+            id="error" readonly size="50px"><br><br>
+        Numero de Fabricas de la Empresa <input type="text" name="numfabricas"> <input type="text"
+            name="errornumfabricas" id="error" readonly size="50px"><br><br>
+
+        Comunidades en las que hay fabricas: <br><br>
+        <select name="comunidades" multiple>
+            <option value="andalucia">Andalucía</option>
+            <option value="aragon">Aragón</option>
+            <option value="baleares">Islas Baleares</option>
+            <option value="canarias">Canarias</option>
+            <option value="cantabria">Cantabria</option>
+            <option value="mancha">Castilla-La Mancha</option>
+            <option value="leon">Castilla y León</option>
+            <option value="cataluna">Cataluña</option>
+            <option value="madrid">Comunidad de Madrid</option>
+            <option value="navarra">Comunidad Foral de navarra</option>
+            <option value="valencia">Comunidad Valenciana</option>
+            <option value="extremadura">Extremadura</option>
+            <option value="galicia">Galicia</option>
+            <option value="pvasco">País Vasco</option>
+            <option value="asturias">Principado de Asturias</option>
+            <option value="murcia">Región de Murcia</option>
+        </select>
+        <br><br>
+        <input type="text" name="errorprovincias" id="error" readonly size="50px">
+        <br><br>
+        <fieldset class="sectores" name="sectores">
+            <legend>Sector/es economicos</legend>
+            <label><input type="checkbox" name="sector1" value="alimentacion" /> Alimentacion</label>
+            <label><input type="checkbox" name="sector2" value="informatica" /> Informatica</label>
+            <label><input type="checkbox" name="sector3" value="comercio" /> Comercio</label>
+            <label><input type="checkbox" name="sector4" value="construccion" /> Construccion</label>
+            <label><input type="checkbox" name="sector5" value="hosteleria" /> Hosteleria</label>
+            <label><input type="checkbox" name="sector6" value="automocion" /> Automocion</label>
+            <label><input type="checkbox" name="sector7" value="calzado" /> Calzado</label>
+            <label><input type="checkbox" name="sector8" value="turismo" /> Turismo</label>
+            <label><input type="checkbox" name="sector9" value="agricultura" /> Agricultura</label>
+            <label><input type="checkbox" name="sector10" value="ganaderia" /> Ganaderia</label>
+            <label><input type="checkbox" name="sector11" value="otros" /> Otros</label>
+        </fieldset>
+        <br>
+        <input type="text" name="errorsectores" id="error" readonly size="50px">
+        <br><br>
+        <fieldset class="tipoempresa" name="tipo">
+            <legend>Tipo de Empresa</legend>
+            <label><input type="radio" name="tipoempresa" value="sa" /> S.A.</label>
+            <label><input type="radio" name="tipoempresa" value="sl" /> S.L.</label>
+            <label><input type="radio" name="tipoempresa" value="sal" /> S.A.L.</label>
+            <label><input type="radio" name="tipoempresa" value="cooperativa" /> Cooperativa</label>
+            <label><input type="radio" name="tipoempresa" value="autonomo" /> Automomo</label>
+            <label><input type="radio" name="tipoempresa" value="otro" /> Otro</label>
+        </fieldset>
+        <br>
+        <input type="text" name="errortipoempresa" id="error" readonly size="50px">
+        <br><br>
+        <input type="submit" value="Validar">
+        <input type="reset" value="Limpiar">
+    </form>
+</body>
+
+</html>
